@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="283dp"
+        android:layout_height="290dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/b"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38">
+
+
+    </androidx.camera.view.PreviewView>
+
+    <ImageView
+        android:id="@+id/b"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/camera_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:srcCompat="@mipmap/camera_foreground" />
+
+    <TextView
+        android:layout_width="289dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="60dp"
+        android:text="gg"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/previewView"
+        android:id="@+id/stats2">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="49dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+
+        app:layout_constraintStart_toEndOf="@+id/b"
+        app:srcCompat="@drawable/flash_icon"
+        tools:srcCompat="@drawable/flash_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
