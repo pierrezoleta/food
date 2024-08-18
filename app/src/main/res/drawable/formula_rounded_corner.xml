@@ -1,0 +1,13 @@
+<!-- res/drawable/rounded_corners_with_stroke.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Corner radius -->
+    <corners android:radius="16dp" />
+
+    <!-- Stroke (border) -->
+    <stroke
+        android:width="2dp"
+         android:color="#CC222429" />
+
+
+</shape>

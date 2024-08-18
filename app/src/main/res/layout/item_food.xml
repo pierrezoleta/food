@@ -4,34 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="20dp">
+    android:paddingBottom="10dp">
 
 
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:background="@drawable/foodhistory_log"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/dishIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/dish_icon"
+
+        tools:srcCompat="@drawable/dish_icon" />
+
 
     <TextView
         android:id="@+id/foodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Adobo"
-        android:textColor="#000000"
+        android:fontFamily="@font/satoshi_medium"
+        android:text="Adobo Manok"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dishIcon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -39,40 +51,36 @@
         android:id="@+id/foodDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="44dp"
-        android:text="asdasdada"
-        android:textColor="#B3000000"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/satoshi_medium"
+        android:text="Date"
+        android:textColor="@color/text_secondary"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintStart_toEndOf="@+id/caloriesTextRecycler"
+        app:layout_constraintTop_toBottomOf="@+id/foodName" />
 
     <ImageView
         android:id="@+id/deleteButton"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-
-
-        android:layout_marginTop="16dp"
-
-
-        android:background="@drawable/circle_x_background"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/trash_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/circle_x" />
+        app:srcCompat="@drawable/trash_icon" />
 
     <TextView
         android:id="@+id/caloriesTextRecycler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="20dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/deleteButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/satoshi_medium"
+        android:text="000"
+        android:textColor="@color/primary"
+        app:layout_constraintStart_toEndOf="@+id/dishIcon"
+        app:layout_constraintTop_toBottomOf="@+id/foodName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

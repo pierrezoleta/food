@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -16,7 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Login extends AppCompatActivity {
     Button loginAccount;
-    TextView back;
+    ImageView back;
     TextInputEditText email;
     EditText pass;
 

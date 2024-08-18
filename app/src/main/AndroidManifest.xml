@@ -5,9 +5,8 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
     <uses-permission android:name="android.permission.CAMERA" />
-
-
 
     <application
         android:allowBackup="true"
@@ -20,37 +19,49 @@
         android:theme="@style/Theme.YtTest"
         tools:targetApi="31">
         <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Onboarding_3"
+            android:exported="false" />
+        <activity
+            android:name=".Onboarding_2"
+            android:exported="false" />
+        <activity
+            android:name=".Onboarding_1"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Scandish"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Fooddetected"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Foodlog"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Personalization"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Signup"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Login"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Splash"
             android:exported="true">

@@ -5,34 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Splash"
-    android:background="@color/blue_main">
+    android:background="@color/bg">
 
     <ImageView
         android:id="@+id/b"
-
-        android:layout_width="152dp"
-        android:layout_height="153dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297"
-        app:srcCompat="@drawable/baseline_food_bank_24" />
+        app:srcCompat="@drawable/logo" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="UWU"
-        android:textColor="@color/white"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b"
-        app:layout_constraintVertical_bias="0.047">
-
-    </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

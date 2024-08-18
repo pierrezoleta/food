@@ -25,7 +25,9 @@ public IngredientFragment(String... ingredientList) {
         View view = inflater.inflate(R.layout.fragment_ingredient, container, false);
         //String ingredientList[] = {"Ingredient 1","Ingredient 2", "Ingredient 3", "Ingredient 4","Ingredient 5", "Ingredient 6", "Ingredient 7", "Ingredient 8"};
         ListView ingredientLv = view.findViewById(R.id.listView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, ingredientList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), R.layout.row, ingredientList);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, ingredientList);
+
         ingredientLv.setAdapter(adapter);
 
         return view;

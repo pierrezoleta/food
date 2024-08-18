@@ -8,10 +8,41 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
-
     <color name = "ligt_blue">#4AA0D0</color>
     <color name="blue_main">#0067DB</color>
     <color name="light_blue_background">#ABDDF9</color>
     <color name="radio_selected_blue">#309CEA</color>
+
+    // new
+    <color name="primary">#3CB9FF</color>
+<!--    <color name="bg">#222429</color>-->
+<!--    <color name="secondary_bg">#2B2E37</color>-->
+    <color name="bg">#141414</color>
+    <color name="secondary_bg">#222429</color>
+
+    // text
+    <color name="text">#FFFFFF</color>
+    <color name="text_secondary">#77819D</color>
+    <color name="text_disabled">#51586A</color>
+    <color name="btn_text">#222429</color>
+    <color name="text_streak">#E6965D</color>
+    <color name="text_exceeded">#E65D5D</color>
+    <color name="text_calories">#E6965D</color>
+    <color name="text_protein">#E65D6D</color>
+    <color name="text_carbs">#785DE6</color>
+    <color name="text_fat">#E6BF5D</color>
+
+    // thumb
+    <color name="thumb">#BF626B85</color>
+
+    // text box
+    <color name="text_box">#222429</color>
+
+    // progress bar
+    <color name="progress_bar_completed">#62FF3B</color>
+    <color name="progress_bar_exceeded">#E65D5D</color>
+
+    // gradient
+    <color name="gradient_start">#3BB9FF</color>
+    <color name="gradient_end">#233F99</color>
 </resources>

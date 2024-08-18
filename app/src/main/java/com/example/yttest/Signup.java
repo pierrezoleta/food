@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,7 +23,7 @@ public class Signup extends AppCompatActivity {
     Button register;
     TextInputEditText username, password,email;
 
-    TextView back;
+    ImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,7 @@ public class Signup extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("username", username.getText().toString());
                     editor.putString("password", password.getText().toString());
+                    editor.putString("email", email.getText().toString());
                     editor.apply();
 
 

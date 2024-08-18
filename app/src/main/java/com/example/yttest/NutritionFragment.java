@@ -1,11 +1,17 @@
 package com.example.yttest;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.text.Html;
+
 
 import androidx.fragment.app.Fragment;
 
@@ -42,6 +48,11 @@ public class NutritionFragment extends Fragment implements QuantityFragment.Quan
         fats = "null";
 
         serving = view.findViewById(R.id.servingSize);
+        // Get the string resource with HTML formatting
+        String formattedText = getString(R.string.serving_size_text);
+        // Set the text with HTML formatting
+        String combinedText = formattedText + recognizedFood;
+        serving.setText(Html.fromHtml(combinedText));
 
         int quantity = Integer.parseInt(String.valueOf(serving.getText().toString().charAt(0)));
 
@@ -179,8 +190,19 @@ public class NutritionFragment extends Fragment implements QuantityFragment.Quan
     public void onQuantityConfirmed(String quantityString) {
         // Update your TextView with the confirmed quantity
         Double quantity;
-        serving.setText(quantityString + " Serving of " + recognizedFood);
+        // serving.setText(quantityString + " Serving of " + recognizedFood);
 
+        // Creating the SpannableString
+        String fullText = quantityString + " - Serving of " + recognizedFood;
+        SpannableString spannableString = new SpannableString(fullText);
+
+        // Setting the color for the quantityString portion
+        int start = 0;
+        int end = quantityString.length();
+        spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#3CB9FF")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        // Setting the text to the TextView
+        serving.setText(spannableString);
 
         //quantity = Integer.parseInt(String.valueOf(serving.getText().toString().charAt(0)));
         quantity = Double.parseDouble(String.valueOf(quantityString));

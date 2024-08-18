@@ -7,58 +7,94 @@
     tools:context=".MainActivity">
 
 
-    <androidx.camera.view.PreviewView
-        android:id="@+id/previewView"
-        android:layout_width="283dp"
-        android:layout_height="290dp"
+<!--    <androidx.camera.view.PreviewView-->
+<!--        android:id="@+id/previewView"-->
+<!--        android:layout_width="283dp"-->
+<!--        android:layout_height="290dp"-->
 
-        app:layout_constraintBottom_toTopOf="@+id/b"
+<!--        app:layout_constraintBottom_toTopOf="@+id/b"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.38">-->
+<!--    </androidx.camera.view.PreviewView>-->
+
+
+
+    <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:keepScreenOn="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
+
+    <View
+            android:id="@+id/square_overlay"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:visibility="visible"
+            android:background="@drawable/camera_scan"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/satoshi_medium"
+        android:text="Align the food in the\ncenter of the frame"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/square_overlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38">
-
-
-    </androidx.camera.view.PreviewView>
+        app:layout_constraintTop_toTopOf="@+id/previewView" />
 
     <ImageView
         android:id="@+id/b"
         android:layout_width="98dp"
         android:layout_height="98dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/camera_background"
+        android:background="@drawable/camera_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-
-        app:srcCompat="@mipmap/camera_foreground" />
+        />
 
     <TextView
+        android:id="@+id/stats2"
         android:layout_width="289dp"
         android:layout_height="129dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:text="gg"
         android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/previewView"
-        android:id="@+id/stats2">
-
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/square_overlay"/>
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="49dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="36dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
 
         app:layout_constraintStart_toEndOf="@+id/b"
-        app:srcCompat="@drawable/flash_icon"
-        tools:srcCompat="@drawable/flash_icon" />
+        app:srcCompat="@drawable/flash_off_icon"
+        tools:srcCompat="@drawable/flash_off_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Transparent background inside the square -->
+    <solid android:color="@android:color/transparent" />
+
+    <!-- Border around the square -->
+    <stroke
+        android:width="2dp"
+        android:color="@android:color/white" />
+
+    <!-- You can adjust the corner radius if you want rounded corners -->
+    <corners android:radius="20dp" />
+</shape>

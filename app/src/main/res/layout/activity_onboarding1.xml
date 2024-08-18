@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".Onboarding_1">
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/onboard_1" />
+
+    <TextView
+        android:id="@+id/skipBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/satoshi_bold"
+        android:letterSpacing="0.1"
+        android:text="SKIP"
+        android:textColor="#CCFFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/satoshi_bold"
+        android:text="Scan food and \nbuild a food diary"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnOnboard1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/primary_button"
+        android:fontFamily="@font/satoshi_bold"
+        android:letterSpacing="0"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="@color/btn_text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btnOnboard1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:id="@+id/viewActive"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="3dp"
+            android:layout_weight="0.5"
+            android:background="@color/white" />
+
+        <View
+            android:id="@+id/viewInactive1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="3dp"
+
+            android:layout_marginEnd="3dp"
+            android:layout_weight="0.5"
+            android:background="#33FFFFFF" />
+
+        <View
+            android:id="@+id/viewInactive2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="3dp"
+            android:layout_weight="0.5"
+            android:background="#33FFFFFF" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

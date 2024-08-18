@@ -11,11 +11,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Home extends AppCompatActivity {
-    Button login, signup;
+    Button login, getstarted;
 
 
 
@@ -41,7 +42,6 @@ public class Home extends AppCompatActivity {
             editor.remove("arraylist");
             editor.apply();
 
-
         }
         // ez
 
@@ -55,16 +55,27 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        signup = findViewById(R.id.btnSignUp);
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Home.this, Signup.class);
-                startActivity(intent);
+//        signup = findViewById(R.id.btnSignUp);
+//        signup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Home.this, Signup.class);
+//                startActivity(intent);
+//
+//            }
+//        });
+//    }
 
-            }
-        });
-    }
+        getstarted = findViewById(R.id.btnGetstarted);
+        getstarted.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Home.this, Onboarding_1.class);
+            startActivity(intent);
+
+        }
+    });
+}
 
     @Override
     public void onBackPressed() {
