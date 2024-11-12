@@ -1,13 +1,18 @@
 package com.example.yttest;
 
+import android.graphics.Bitmap;
+
 public class FoodClass {
     private String name, date, time;
     private int quantity;
+//    private Bitmap image;
     public FoodClass(String name, int quantity, String date, String time){
         this.name = name;
         this.quantity = quantity;
         this.date = date;
         this.time = time;
+
+//        this.image = image;
     }
 
     public String getName() {
@@ -41,4 +46,9 @@ public class FoodClass {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+//    public void setImage(Bitmap image) {this.image = image;}
+//    public Bitmap getImage() { // Add a getter for the image
+//        return image;
+//    }
 }

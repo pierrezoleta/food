@@ -21,7 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Profile extends AppCompatActivity {
 
-    TextView weightText, heightText, usernameText, emailText, profileLetter;
+    TextView weightText, heightText, usernameText, emailText, profileLetter, genderText, ageText;
     LinearLayout buttonHome;
     ConstraintLayout buttonLogout, buttonPersonalize;
     FloatingActionButton btnScan;
@@ -35,7 +35,10 @@ public class Profile extends AppCompatActivity {
         heightText = findViewById(R.id.textHeight);
         usernameText = findViewById(R.id.textUsername);
         emailText = findViewById(R.id.textEmail);
-        profileLetter = findViewById(R.id.profileLetter);
+        genderText = findViewById(R.id.textGender);
+        ageText = findViewById(R.id.textAge);
+
+//        profileLetter = findViewById(R.id.profileLetter);
 
         SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
         SharedPreferences sharedMyPrefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -43,26 +46,33 @@ public class Profile extends AppCompatActivity {
 
         float weight = sharedPreferences.getFloat("weight", 0);
         float height = sharedPreferences.getFloat("height", 0);
+        int age = sharedPreferences.getInt("age",0);
+        String gender = sharedPreferences.getString("gender","N/A");
+
         String username = sharedMyPrefs.getString("username","N/A");
         String capitalizedUsername = capitalizeFirstLetter(username);
-        String firstLetter = getFirstLetter(username);
-        String email = sharedMyPrefs.getString("email","N/A");
+//        String firstLetter = getFirstLetter(username);
+//        String email = sharedMyPrefs.getString("email","N/A");
 
 
         weightText.setText(String.valueOf(weight));
         heightText.setText(String.valueOf(height));
+        ageText.setText(String.valueOf(age));
+        genderText.setText(gender);
+
+
         usernameText.setText(capitalizedUsername);
-        profileLetter.setText(firstLetter);
-        emailText.setText(email);
+//        profileLetter.setText(firstLetter);
+//        emailText.setText(email);
 
 
         buttonHome = findViewById(R.id.buttonHome);
         buttonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to navigate to ProfileActivity
-                Intent intent = new Intent(Profile.this, Foodlog.class);
-                startActivity(intent);
+//                Intent intent = new Intent(Profile.this, Foodlog.class);
+//                startActivity(intent);
+                finish();
                 overridePendingTransition(1, 1);
             }
         });
@@ -126,13 +136,13 @@ public class Profile extends AppCompatActivity {
         }
         return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
     }
-
-    public String getFirstLetter(String input) {
-        if (input == null || input.isEmpty()) {
-            return "";
-        }
-        return input.substring(0, 1).toUpperCase(); // Capitalize the first letter
-    }
+//
+//    public String getFirstLetter(String input) {
+//        if (input == null || input.isEmpty()) {
+//            return "";
+//        }
+//        return input.substring(0, 1).toUpperCase(); // Capitalize the first letter
+//    }
 
 
 }

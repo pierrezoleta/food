@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_bg"
+    android:background="@color/bg"
     tools:context=".Foodlog">
 
     <com.example.yttest.VerticalScrollView
@@ -20,6 +20,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <View
+                android:id="@+id/background_green"
+                android:layout_width="match_parent"
+                android:layout_height="620dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/formulaContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/formula_rounded_corner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calorie_progress_bar" />
+
+
+
+
+
             <nl.dionsegijn.konfetti.xml.KonfettiView
                 android:id="@+id/konfettiView"
                 android:layout_width="match_parent"
@@ -27,40 +51,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/streakContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="20dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:orientation="horizontal"
-                android:background="@drawable/streak_rounded_container"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+<!--            <Button-->
+<!--                android:id="@+id/testPopup"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="32dp"-->
+<!--                android:background="#00FFFFFF"-->
+<!--                android:text="test"-->
+<!--                android:textColor="#54FFFFFF"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-                <ImageView
-                    android:id="@+id/imageView13"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="5dp"
-                    app:srcCompat="@drawable/streak_none_icon" />
 
-                <TextView
-                    android:id="@+id/streakCounter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="0"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/satoshi_bold"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/buttonPersonalize"
@@ -72,7 +75,10 @@
                 android:background="@drawable/bmr_gradient_rounded"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recycylerViewFoodLog">
+                app:layout_constraintTop_toBottomOf="@id/recycylerViewFoodLog"
+                android:visibility="gone">
+
+
 
                 <ImageView
                     android:id="@+id/imageView9"
@@ -91,197 +97,197 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/satoshi_bold"
                     android:text="Edit your BMR"
                     android:textColor="@color/white"
                     android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageView9"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="12dp"
-                    android:fontFamily="@font/satoshi_medium"
-                    android:text="Adjust your BMR for accurate\ndaily calorie calculations."
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/imageView9"
-                    app:layout_constraintTop_toBottomOf="@id/textView6" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
-
-            <View
-                android:id="@+id/formulaContainer"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/formula_rounded_corner"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dateTextView"
-                android:elevation="2dp"/>
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/calorie_progress_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="140dp"
                 android:layout_marginEnd="7dp"
-                android:progress="60"
-                app:indicatorColor="#993CB9FF"
+                android:progress="20"
+                app:indicatorColor="#3CB9FF"
                 app:indicatorSize="300dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:trackColor="#B3303339"
+                app:trackColor="@color/secondary_bg"
                 app:trackCornerRadius="10dp"
-                app:trackThickness="18dp" />
+                app:trackThickness="10dp" />
+
+
 
 
             <TextView
                 android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/satoshi_medium"
-                android:textColor="@color/text_exceeded"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/plusjakarta_medium"
                 android:text="Remaining"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/remainingSmall"
-                app:layout_constraintStart_toStartOf="@+id/remainingSmall"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/remainingIcon"
                 app:layout_constraintTop_toBottomOf="@+id/remainingSmall" />
+
 
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/satoshi_medium"
-                android:textColor="@color/text_streak"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/plusjakarta_medium"
                 android:text="Eaten"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/consumedSmall"
-                app:layout_constraintStart_toStartOf="@+id/consumedSmall"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/EatenIcon"
                 app:layout_constraintTop_toBottomOf="@+id/consumedSmall" />
+
+            <ImageView
+                android:id="@+id/EatenIcon"
+                android:layout_width="26dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="60dp"
+                android:src="@drawable/eaten_icon"
+                app:layout_constraintBottom_toBottomOf="@id/formulaContainer"
+                app:layout_constraintEnd_toEndOf="@id/formulaContainer"
+                app:layout_constraintStart_toStartOf="@id/formulaContainer"
+                app:layout_constraintTop_toTopOf="@+id/formulaContainer" />
 
             <TextView
                 android:id="@+id/consumedSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/satoshi_medium"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/plusjakarta_semibold"
                 android:text="1230"
-                android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textColor="@color/text"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/formulaContainer" />
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/EatenIcon"
+                app:layout_constraintTop_toTopOf="@+id/EatenIcon" />
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:fontFamily="@font/satoshi_bold"
+                android:fontFamily="@font/clashdisplay_semibold"
                 android:text="="
                 android:textColor="@color/text_secondary"
-                android:textSize="24sp"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/formulaContainer"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.667"
+                app:layout_constraintHorizontal_bias="0.67"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/formulaContainer" />
+                app:layout_constraintTop_toTopOf="@+id/formulaContainer"
+                 />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/satoshi_bold"
+                android:fontFamily="@font/clashdisplay_semibold"
                 android:text="-"
                 android:textColor="@color/text_secondary"
-                android:textSize="24sp"
 
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/formulaContainer"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.363"
+                app:layout_constraintHorizontal_bias="0.334"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/formulaContainer"
+                />
+
+            <ImageView
+                android:id="@+id/goalIcon"
+                android:layout_width="26dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="12dp"
+                android:src="@drawable/goal_icon"
+                app:layout_constraintBottom_toBottomOf="@id/formulaContainer"
+                app:layout_constraintStart_toStartOf="@+id/formulaContainer"
                 app:layout_constraintTop_toTopOf="@+id/formulaContainer" />
 
             <TextView
                 android:id="@+id/caloriesSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/satoshi_medium"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/plusjakarta_semibold"
                 android:text="2,189"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.19"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/goalIcon"
+                app:layout_constraintTop_toTopOf="@+id/goalIcon" />
+
+            <ImageView
+                android:id="@+id/remainingIcon"
+                android:layout_width="26dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/remaining_icon"
+                app:layout_constraintBottom_toBottomOf="@id/formulaContainer"
+                app:layout_constraintStart_toEndOf="@+id/textView18"
                 app:layout_constraintTop_toTopOf="@+id/formulaContainer" />
 
             <TextView
                 android:id="@+id/remainingSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/satoshi_medium"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/plusjakarta_semibold"
                 android:text="959"
-                android:textColor="@color/white"
-                android:textSize="20sp"
 
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/remainingIcon"
+                app:layout_constraintTop_toTopOf="@+id/remainingIcon" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.809"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/formulaContainer" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
 
             <TextView
                 android:id="@+id/dateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/date_rounded_corners"
-                android:fontFamily="@font/satoshi_regular"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/plusjakarta_bold"
                 android:text="Today"
-                android:textColor="#FFFFFF"
-                android:textSize="16dp"
-                android:textStyle="bold"
+                android:textColor="@color/text_secondary"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/calorie_progress_bar" />
+                app:layout_constraintTop_toBottomOf="@id/logo" />
 
 
             <TextView
                 android:id="@+id/textCaloriess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="40dp"
-                android:fontFamily="@font/satoshi_bold"
+                android:fontFamily="@font/plusjakarta_bold"
                 android:text="2,189"
-                android:textColor="#FFFFFF"
-                android:textSize="70sp"
+                android:textColor="@color/white"
+                android:textSize="60sp"
                 app:layout_constraintBottom_toBottomOf="@+id/calorie_progress_bar"
                 app:layout_constraintEnd_toEndOf="@+id/calorie_progress_bar"
                 app:layout_constraintStart_toStartOf="@+id/calorie_progress_bar"
@@ -291,12 +297,12 @@
                 android:id="@+id/txtCalorieRemaining"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/satoshi_medium"
-                android:text="KCAL REMAINING"
-                android:textSize="14sp"
-                android:letterSpacing="0.2"
+                android:fontFamily="@font/plusjakarta_bold"
+                android:text="Calories Remaining"
+                android:textSize="16sp"
+                android:letterSpacing="0"
 
-                android:textColor="@color/primary"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textCaloriess"
@@ -307,13 +313,12 @@
                 android:id="@+id/textView21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/satoshi_medium"
-                android:textColor="@color/primary"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/plusjakarta_medium"
                 android:text="Goal"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/caloriesSmall"
-                app:layout_constraintStart_toStartOf="@+id/caloriesSmall"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/goalIcon"
                 app:layout_constraintTop_toBottomOf="@+id/caloriesSmall" />
 
 
@@ -321,16 +326,25 @@
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="38dp"
-                android:fontFamily="@font/satoshi_bold"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/plusjakarta_bold"
                 android:text="Meal Diary"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:textColor="@color/text"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/formulaContainer" />
 
+
+            <ImageView
+                android:id="@+id/imageNoFood"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/no_food_placeholder"
+                app:layout_constraintTop_toBottomOf="@id/textView24" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycylerViewFoodLog"
@@ -344,7 +358,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textView24" />
 
             <View
-                android:id="@+id/view3"
+                android:id="@+id/recycler_gradient"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginStart="16dp"
@@ -360,6 +374,15 @@
                 android:layout_height="110dp"
                 app:layout_constraintTop_toBottomOf="@id/buttonPersonalize"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
+                tools:layout_editor_absoluteY="137dp"
+                android:background="@drawable/gray_bg"
+                app:layout_constraintTop_toTopOf="@id/textView24"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.example.yttest.VerticalScrollView>
@@ -379,11 +402,12 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_gravity="bottom"
-            android:backgroundTint="#222429"
+            android:backgroundTint="#1D212B"
             app:fabCradleRoundedCornerRadius="50dp"
             app:fabCradleVerticalOffset="4dp"
-            app:fabCradleMargin="8dp"
-            app:elevation="8dp">
+            app:fabCradleMargin="6dp"
+            app:elevation="8dp"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -399,8 +423,8 @@
 
                     <ImageView
                         android:id="@+id/imageView81"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_gravity="center"
                         app:srcCompat="@drawable/home_active_icon" />
 
@@ -409,10 +433,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Home"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary"
                         android:gravity="center"
                         android:layout_marginTop="3dp"
-                        android:fontFamily="@font/satoshi_medium"/>
+                        android:fontFamily="@font/plusjakarta_medium"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -437,7 +461,7 @@
                         android:textColor="@color/text_secondary"
                         android:gravity="center"
                         android:layout_marginTop="3dp"
-                        android:fontFamily="@font/satoshi_medium"/>
+                        android:fontFamily="@font/plusjakarta_medium"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -449,8 +473,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_gravity="center"
                         app:srcCompat="@drawable/profile_icon" />
 
@@ -462,7 +486,7 @@
                         android:textColor="@color/text_secondary"
                         android:gravity="center"
                         android:layout_marginTop="3dp"
-                        android:fontFamily="@font/satoshi_medium"/>
+                        android:fontFamily="@font/plusjakarta_medium"/>
                 </LinearLayout>
 
             </LinearLayout>

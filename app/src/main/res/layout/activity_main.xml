@@ -4,33 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
-<!--    <androidx.camera.view.PreviewView-->
-<!--        android:id="@+id/previewView"-->
-<!--        android:layout_width="283dp"-->
-<!--        android:layout_height="290dp"-->
-
-<!--        app:layout_constraintBottom_toTopOf="@+id/b"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.38">-->
-<!--    </androidx.camera.view.PreviewView>-->
-
+    tools:context=".MainActivity"
+    android:background="@color/black">
 
 
     <androidx.camera.view.PreviewView
-            android:id="@+id/previewView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:keepScreenOn="true"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="MissingConstraints" />
+        android:id="@+id/previewView"
+        android:layout_width="290dp"
+        android:layout_height="290dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/b"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+    </androidx.camera.view.PreviewView>
+
+
+<!--new camera preview-->
+<!--    <androidx.camera.view.PreviewView-->
+<!--            android:id="@+id/previewView"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:keepScreenOn="true"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+
 
     <View
             android:id="@+id/square_overlay"
@@ -39,37 +43,37 @@
             android:visibility="visible"
             android:background="@drawable/camera_scan"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/previewView"
+            app:layout_constraintBottom_toBottomOf="@id/previewView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/satoshi_medium"
+        android:fontFamily="@font/plusjakarta_bold"
         android:text="Align the food in the\ncenter of the frame"
-        android:textColor="@color/white"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/square_overlay"
+        app:layout_constraintBottom_toTopOf="@+id/previewView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/previewView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/b"
         android:layout_width="98dp"
         android:layout_height="98dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/camera_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/stats2"
@@ -81,20 +85,32 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/square_overlay"/>
+        app:layout_constraintTop_toBottomOf="@+id/square_overlay"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
 
         app:layout_constraintStart_toEndOf="@+id/b"
         app:srcCompat="@drawable/flash_off_icon"
         tools:srcCompat="@drawable/flash_off_icon" />
+
+    <ImageView
+        android:id="@+id/btnBackCamera"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/b"
+
+        app:srcCompat="@drawable/x_icon"
+        tools:srcCompat="@drawable/x_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="10dp">
+    android:paddingBottom="14dp">
 
 
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:background="@drawable/foodhistory_log"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,9 +20,9 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/dishIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/dishImage"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,14 +36,14 @@
         android:id="@+id/foodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/satoshi_medium"
+        android:fontFamily="@font/plusjakarta_semibold"
         android:text="Adobo Manok"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textColor="@color/text"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintStart_toEndOf="@+id/dishIcon"
+        app:layout_constraintStart_toEndOf="@+id/dishImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -51,36 +51,45 @@
         android:id="@+id/foodDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/satoshi_medium"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/plusjakarta_medium"
         android:text="Date"
         android:textColor="@color/text_secondary"
-        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/caloriesTextRecycler"
-        app:layout_constraintTop_toBottomOf="@+id/foodName" />
+        app:layout_constraintTop_toTopOf="@+id/calorieIcon"
+        app:layout_constraintBottom_toBottomOf="@id/calorieIcon" />
 
     <ImageView
         android:id="@+id/deleteButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/trash_icon"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/trash_icon" />
 
+    <ImageView
+        android:id="@+id/calorieIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/kcal_icon"
+        app:layout_constraintStart_toEndOf="@+id/dishImage"
+        app:layout_constraintTop_toBottomOf="@id/foodName"/>
+
     <TextView
         android:id="@+id/caloriesTextRecycler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/satoshi_medium"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/plusjakarta_medium"
         android:text="000"
-        android:textColor="@color/primary"
-        app:layout_constraintStart_toEndOf="@+id/dishIcon"
-        app:layout_constraintTop_toBottomOf="@+id/foodName" />
+        android:textColor="@color/text_calories"
+        app:layout_constraintBottom_toBottomOf="@id/calorieIcon"
+        app:layout_constraintStart_toEndOf="@+id/calorieIcon"
+        app:layout_constraintTop_toTopOf="@+id/calorieIcon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

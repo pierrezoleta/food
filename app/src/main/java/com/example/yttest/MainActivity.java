@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isFlashOn = false;
 
     private PreviewView previewView;
-    ImageView capture, flash;
+    ImageView capture, flash, backCameraButton;
     int cameraFacing = CameraSelector.LENS_FACING_BACK;
     private final ActivityResultLauncher<String> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
         @Override
@@ -271,7 +271,13 @@ public class MainActivity extends AppCompatActivity {
             startCamera(cameraFacing);
         }
 
-
+        backCameraButton = findViewById(R.id.btnBackCamera);
+        backCameraButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
 
@@ -329,53 +335,50 @@ public class MainActivity extends AppCompatActivity {
 
                 // Old camera preview
 
-//                capture.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//
-//
-//
-//                        Bitmap image = previewView.getBitmap();
-//
-//                        ImageHolder singleton = ImageHolder.getInstance();
-//                        singleton.setBitmap(image);
-//
-//                        image = Bitmap.createScaledBitmap(image,imageSize, imageSize, false);
-//                        classifyImage(image);
-//
-//
-//
-//                    }
-//                });
-
-                // New camera preview
                 capture.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         Bitmap image = previewView.getBitmap();
 
-                        // Convert dp to pixels if needed
-                        int dpToPx = (int) (280 * getResources().getDisplayMetrics().density);
-
-                        // Use the fixed size of the square overlay
-                        int squareSize = dpToPx; // 280px
-
-                        // Calculate offsets for cropping
-                        int xOffset = (image.getWidth() - squareSize) / 2;
-                        int yOffset = (image.getHeight() - squareSize) / 2;
-
-                        // Crop the image to the square overlay dimensions
-                        Bitmap croppedImage = Bitmap.createBitmap(image, xOffset, yOffset, squareSize, squareSize);
-
                         ImageHolder singleton = ImageHolder.getInstance();
-                        singleton.setBitmap(croppedImage);
+                        singleton.setBitmap(image);
 
-                        // Scale and classify the image
-                        Bitmap scaledImage = Bitmap.createScaledBitmap(croppedImage, imageSize, imageSize, false);
-                        classifyImage(scaledImage);
+                        image = Bitmap.createScaledBitmap(image,imageSize, imageSize, false);
+                        classifyImage(image);
+
+
+
                     }
                 });
+
+                // New camera preview
+//                capture.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        Bitmap image = previewView.getBitmap();
+//
+//                        // Convert dp to pixels if needed
+//                        int dpToPx = (int) (280 * getResources().getDisplayMetrics().density);
+//
+//                        // Use the fixed size of the square overlay
+//                        int squareSize = dpToPx; // 280px
+//
+//                        // Calculate offsets for cropping
+//                        int xOffset = (image.getWidth() - squareSize) / 2;
+//                        int yOffset = (image.getHeight() - squareSize) / 2;
+//
+//                        // Crop the image to the square overlay dimensions
+//                        Bitmap croppedImage = Bitmap.createBitmap(image, xOffset, yOffset, squareSize, squareSize);
+//
+//                        ImageHolder singleton = ImageHolder.getInstance();
+//                        singleton.setBitmap(croppedImage);
+//
+//                        // Scale and classify the image
+//                        Bitmap scaledImage = Bitmap.createScaledBitmap(croppedImage, imageSize, imageSize, false);
+//                        classifyImage(scaledImage);
+//                    }
+//                });
 
 
                 flash.setOnClickListener(new View.OnClickListener() {

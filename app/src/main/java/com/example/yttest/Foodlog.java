@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -50,6 +51,7 @@ import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemClickListener {
 
+    Button testButton;
     private KonfettiView konfettiView = null;
     private Shape.DrawableShape drawableShape = null;
 
@@ -64,6 +66,7 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
 
     ConstraintLayout buttonPersonalize;
 
+    ImageView emptyView;
 
     private ArrayList<FoodClass> foodItemList = new ArrayList<>(); // the arraylist for recycler view
 
@@ -78,13 +81,8 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
         KcalText = findViewById(R.id.txtCalorieRemaining);
         TextView dateTextView = findViewById(R.id.dateTextView);
         buttonProfile = findViewById(R.id.buttonProfile);
+        emptyView = findViewById(R.id.imageNoFood);
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM", Locale.getDefault());
-        String date = dateFormat.format(calendar.getTime());
-
-        String formattedDate = "TODAY, " + date.toUpperCase();
-        dateTextView.setText(formattedDate);
 
         buttonPersonalize.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +112,7 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
 
             }
         });
+
 
         caloriesSmall = findViewById(R.id.caloriesSmall);
         consumedSmall = findViewById(R.id.consumedSmall);
@@ -146,6 +145,15 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
         recyclerView.setAdapter(foodAdapter);
 
 
+        // hide show recycler view
+
+        if (foodAdapter.getItemCount() == 0) {
+            recyclerView.setVisibility(View.INVISIBLE);
+            emptyView.setVisibility(View.VISIBLE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.INVISIBLE);
+        }
 
         btnScan = findViewById(R.id.btnScan);
         btnScan.setOnClickListener(new View.OnClickListener() {
@@ -228,22 +236,28 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
 
         int progress;
         if (caloriesAllowed < -500) {
+
             explode();
             progressBar.setIndicatorColor(ContextCompat.getColor(this, R.color.progress_bar_exceeded));
             progress = 100;
             KcalText.setTextColor(ContextCompat.getColor(this, R.color.progress_bar_exceeded));
+
+
         } else if (caloriesAllowed <= 0) {
+
             explode();
             progressBar.setIndicatorColor(ContextCompat.getColor(this, R.color.progress_bar_completed));
             progress = 100;
             KcalText.setTextColor(ContextCompat.getColor(this, R.color.progress_bar_completed));
+
+
         } else {
             // Calculate progress based on calories consumed
             float caloriesConsumed = calorieAllowance - caloriesAllowed;
             progress = (int) ((caloriesConsumed / calorieAllowance) * 100);
             progress = Math.max(0, Math.min(progress, 100)); // Ensure progress is within 0-100 range
-            progressBar.setIndicatorColor(ContextCompat.getColor(this, R.color.primary));
-            KcalText.setTextColor(ContextCompat.getColor(this, R.color.primary));
+            progressBar.setIndicatorColor(ContextCompat.getColor(this, R.color.progress_bar_default));
+            KcalText.setTextColor(ContextCompat.getColor(this, R.color.progress_bar_default));
         }
 
         if (progressBar.getProgress() != progress) {
@@ -284,6 +298,19 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
         );
     }
 
+
+
+    private boolean isNextDay(Calendar lastDate, Calendar currentDate) {
+        lastDate.add(Calendar.DATE, 1);
+        return lastDate.get(Calendar.YEAR) == currentDate.get(Calendar.YEAR) &&
+                lastDate.get(Calendar.DAY_OF_YEAR) == currentDate.get(Calendar.DAY_OF_YEAR);
+    }
+
+    private boolean isSameDay(Calendar lastDate, Calendar currentDate) {
+        return lastDate.get(Calendar.YEAR) == currentDate.get(Calendar.YEAR) &&
+                lastDate.get(Calendar.DAY_OF_YEAR) == currentDate.get(Calendar.DAY_OF_YEAR);
+    }
+
     @Override
     public void onBackPressed() {
         // Do nothing (disable the back button)
@@ -308,6 +335,4 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
         // Create and show the AlertDialog
         builder.create().show();
     }
-
-
 }

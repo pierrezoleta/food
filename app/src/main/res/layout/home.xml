@@ -56,9 +56,9 @@
 
 
     <ImageView
-        android:layout_width="120dp"
+        android:layout_width="260dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/btnGetstarted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -72,10 +72,11 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="16dp"
+        android:padding="8dp"
         android:text="Get Started"
         android:layout_marginTop="24dp"
         android:background="@drawable/primary_button"
-        android:fontFamily="@font/satoshi_bold"
+        android:fontFamily="@font/plusjakarta_bold"
         android:textAllCaps="false"
         android:textColor="@color/btn_text"
         android:textSize="18sp"
@@ -93,7 +94,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:background="#00FFFFFF"
-        android:fontFamily="@font/satoshi_bold"
+        android:fontFamily="@font/plusjakarta_bold"
         android:letterSpacing="0"
         android:text="@string/login"
         android:textAllCaps="false"

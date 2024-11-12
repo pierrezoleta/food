@@ -4,6 +4,6 @@
     android:layout_height="wrap_content"
     android:padding="25dp"
     android:textSize="15sp"
-    android:fontFamily="@font/satoshi_medium"
+    android:fontFamily="@font/plusjakarta_medium"
     android:textColor="@color/white">
 </TextView>
