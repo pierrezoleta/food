@@ -14,17 +14,22 @@
     <color name="radio_selected_blue">#309CEA</color>
 
     // new
-    <color name="primary">#3CB9FF</color>
+    <color name="primary">#0099FF</color>
 <!--    <color name="bg">#222429</color>-->
 <!--    <color name="secondary_bg">#2B2E37</color>-->
-    <color name="bg">#141414</color>
-    <color name="secondary_bg">#222429</color>
+
+
+<!--    <color name="bg">#212531</color>-->
+<!--    <color name="secondary_bg">#293044</color>-->
+
+    <color name="bg">#0F1422</color>
+    <color name="secondary_bg">#1A2236</color>
 
     // text
     <color name="text">#FFFFFF</color>
-    <color name="text_secondary">#77819D</color>
+    <color name="text_secondary">#6B799F</color>
     <color name="text_disabled">#51586A</color>
-    <color name="btn_text">#222429</color>
+    <color name="btn_text">#FFFFFF</color>
     <color name="text_streak">#E6965D</color>
     <color name="text_exceeded">#E65D5D</color>
     <color name="text_calories">#E6965D</color>
@@ -36,13 +41,25 @@
     <color name="thumb">#BF626B85</color>
 
     // text box
-    <color name="text_box">#222429</color>
+    <color name="text_box">#151C2E</color>
+<!--    <color name="text_box_outline">#293044</color>-->
+    <color name="text_box_outline">#00293044</color>
+
+
 
     // progress bar
-    <color name="progress_bar_completed">#62FF3B</color>
+    <color name="progress_bar_completed">#2AD87D</color>
     <color name="progress_bar_exceeded">#E65D5D</color>
+    <color name="progress_bar_default">#0099FF</color>
+
+    <color name="button_disabled">#131826</color>
+
+
+
 
     // gradient
     <color name="gradient_start">#3BB9FF</color>
     <color name="gradient_end">#233F99</color>
+
+
 </resources>

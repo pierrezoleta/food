@@ -2,12 +2,15 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Corner radius -->
-    <corners android:radius="16dp" />
+    <corners android:radius="20dp" />
 
-    <!-- Stroke (border) -->
     <stroke
         android:width="2dp"
-         android:color="#CC222429" />
+        android:color="@color/text_box_outline"/>
 
+    />
+
+<!--    <solid-->
+<!--        android:color="@color/secondary_bg" />-->
 
 </shape>

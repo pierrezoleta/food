@@ -54,6 +54,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'nl.dionsegijn:konfetti-xml:2.0.4'
 
+    implementation 'com.airbnb.android:lottie:6.5.0'
 
 }
 

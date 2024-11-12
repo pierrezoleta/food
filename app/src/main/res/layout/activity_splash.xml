@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Splash"
-    android:background="@color/bg">
+    android:background="#1E212C">
 
     <ImageView
         android:id="@+id/b"
-        android:layout_width="140dp"
+        android:layout_width="260dp"
         android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

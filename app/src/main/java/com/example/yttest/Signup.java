@@ -69,10 +69,10 @@ public class Signup extends AppCompatActivity {
                     validPassword = false;
                     password.setError("Password must be between 4-20 characters");
                 }
-                if(!(matcher2.matches() || matcher.matches())){
-                    validEmail=false;
-                    email.setError("Email must end with @yahoo.com or @gmail.com");
-                }
+//                if(!(matcher2.matches() || matcher.matches())){
+//                    validEmail=false;
+//                    email.setError("Email must end with @yahoo.com or @gmail.com");
+//                }
 
                 if(validUsername && validPassword&&validEmail){
                     Intent intent = new Intent(Signup.this, Personalization.class);

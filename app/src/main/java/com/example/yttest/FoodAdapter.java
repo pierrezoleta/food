@@ -49,7 +49,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             holder.itemNameTextView.setText(foodItem.getName());
             holder.itemDescriptionTextView.setText(foodItem.getDate());
             holder.itemCalories.setText(String.valueOf(foodItem.getQuantity()) + " k/cal");
-
+//            holder.itemDishImage.setImageBitmap(foodItem.getImage());
 
 
 
@@ -105,13 +105,16 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
         ImageView deleteButton;
 
+//        ImageView itemDishImage;
+
+
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
             itemNameTextView = itemView.findViewById(R.id.foodName);
             itemDescriptionTextView = itemView.findViewById(R.id.foodDescription);
             itemCalories = itemView.findViewById(R.id.caloriesTextRecycler);
-
             deleteButton = itemView.findViewById(R.id.deleteButton);
+//            itemDishImage = itemView.findViewById(R.id.dishImage);
         }
     }
 

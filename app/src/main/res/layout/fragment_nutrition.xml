@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".NutritionFragment"
-    android:background="@color/bg">
+    >
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -34,9 +34,8 @@
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/calorie_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -46,12 +45,11 @@
                     android:id="@+id/textCalories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/satoshi_bold"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/plusjakarta_bold"
                     android:text="000"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/text"
+                    android:textSize="24sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,12 +57,12 @@
                     android:id="@+id/textView42"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/satoshi_medium"
+                    android:fontFamily="@font/plusjakarta_medium"
                     android:text="Calories"
                     android:textColor="@color/text_calories"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toBottomOf="@+id/textCalories" />
 
@@ -77,9 +75,8 @@
 
                 <ImageView
                     android:id="@+id/imageView6"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/protein_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -89,12 +86,11 @@
                     android:id="@+id/textProtein"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/satoshi_bold"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/plusjakarta_bold"
                     android:text="0g"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/text"
+                    android:textSize="24sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView6"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,12 +98,12 @@
                     android:id="@+id/textView42Test"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/satoshi_medium"
+                    android:fontFamily="@font/plusjakarta_medium"
                     android:text="Protein"
                     android:textColor="@color/text_protein"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView6"
                     app:layout_constraintTop_toBottomOf="@+id/textProtein" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -118,7 +114,13 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+
+
+
             android:orientation="horizontal">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -128,9 +130,8 @@
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/carbs_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -140,12 +141,11 @@
                     android:id="@+id/textCarbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/satoshi_bold"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/plusjakarta_bold"
                     android:text="0g"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textSize="24sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView4"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -153,12 +153,12 @@
                     android:id="@+id/textView421"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/satoshi_medium"
+                    android:fontFamily="@font/plusjakarta_medium"
                     android:text="Carbs"
-                    android:textColor="@color/text_carbs"
-                    android:textSize="14sp"
+                    android:textColor="#2AD87D"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView4"
                     app:layout_constraintTop_toBottomOf="@+id/textCarbs" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -170,9 +170,8 @@
 
                 <ImageView
                     android:id="@+id/imageView7"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/fat_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -182,12 +181,11 @@
                     android:id="@+id/textFats"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/satoshi_bold"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/plusjakarta_bold"
                     android:text="0g"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/text"
+                    android:textSize="26sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView7"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -195,12 +193,12 @@
                     android:id="@+id/textView422"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/satoshi_medium"
+                    android:fontFamily="@font/plusjakarta_medium"
                     android:text="Fat"
                     android:textColor="@color/text_fat"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView7"
                     app:layout_constraintTop_toBottomOf="@+id/textFats" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -224,11 +222,11 @@
             android:id="@+id/servingSize"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/satoshi_bold"
+            android:fontFamily="@font/plusjakarta_bold"
             android:text="@string/serving_size_text"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:textColor="@color/white"
+            android:textColor="@color/text"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

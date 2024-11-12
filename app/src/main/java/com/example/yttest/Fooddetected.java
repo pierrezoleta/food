@@ -2,6 +2,7 @@ package com.example.yttest;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.processing.SurfaceProcessorNode;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,7 +31,7 @@ import java.util.Locale;
 
 public class Fooddetected extends AppCompatActivity {
 
-
+    Button backButton;
     String textResult;
 
     Button logFood;
@@ -41,6 +43,14 @@ public class Fooddetected extends AppCompatActivity {
 
 
         logFood = findViewById(R.id.btnLogFood);
+        backButton = findViewById(R.id.btnBack);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         logFood.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +126,11 @@ public class Fooddetected extends AppCompatActivity {
                     // Format the date and time
                     String dateTime = dateFormat.format(calendar.getTime());
 
+
                     foodList.add(new FoodClass(foodName, foodQuantity, dateTime, dateTime));
+
+
+
 
 
                     SharedPreferences.Editor editor = prefs.edit();
@@ -148,6 +162,19 @@ public class Fooddetected extends AppCompatActivity {
 
             TextView textView = findViewById(R.id.textView28);
             textView.setText(textResult);
+
+            // Check if the text is "Uncertain" and disable the button
+            if ("Uncertain".equals(textResult)) {
+                logFood.setEnabled(false);  // Disable the button
+                logFood.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.button_background_color));
+                logFood.setTextColor(ContextCompat.getColorStateList(this, R.color.button_text_color));
+
+            } else {
+                logFood.setEnabled(true);   // Enable the button
+                logFood.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.primary));
+                logFood.setTextColor(ContextCompat.getColorStateList(this, R.color.button_text_color));
+
+            }
         }
 
         ViewPager viewPager = findViewById(R.id.viewPager);
