@@ -18,6 +18,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean isFlashOn = false;
 
     private PreviewView previewView;
-    ImageView capture, flash, backCameraButton;
+    ImageView capture, flash, backCameraButton, gallery;
+    ActivityResultLauncher<Intent> galleryLauncher;
     int cameraFacing = CameraSelector.LENS_FACING_BACK;
     private final ActivityResultLauncher<String> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
         @Override
@@ -169,9 +171,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-            if (maxProbability < 0.70){
-                foodDetected = "Uncertain";
-            }
+//            if (maxProbability < 0.70){
+//                foodDetected = "Uncertain";
+//            }
 
 
 
@@ -209,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
             // TODO Handle the exception
         }
     }
+
+
 
 
 
@@ -278,6 +282,47 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        gallery = findViewById(R.id.galleryButton);
+
+        // Initialize the gallery launcher
+        galleryLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Uri imageUri = result.getData().getData();
+                        try {
+                            Bitmap image = BitmapFactory.decodeStream(
+                                    getContentResolver().openInputStream(imageUri)
+                            );
+
+                            ImageHolder singleton = ImageHolder.getInstance();
+                            singleton.setBitmap(image);
+
+//                            // Display the selected image in an ImageView if needed
+//                            imageView = findViewById(R.id.imageView); // Ensure this ImageView exists in your layout
+//                            imageView.setImageBitmap(image);
+
+                            // Resize the image and pass it to classifyImage
+                            Bitmap scaledImage = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
+                            classifyImage(scaledImage);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Toast.makeText(this, "Error loading image", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+
+        // Set the galleryButton click listener
+        gallery.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            galleryLauncher.launch(intent);
+        });
+
+        // Other initialization code...
+
 
 
 

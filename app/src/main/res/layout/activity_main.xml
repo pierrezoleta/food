@@ -8,18 +8,30 @@
     android:background="@color/black">
 
 
+    <ImageView
+        android:id="@+id/galleryButton"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="164dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toEndOf="@+id/b"
+        app:srcCompat="@drawable/flash_off_icon"
+        tools:srcCompat="@drawable/flash_off_icon" />
+
     <androidx.camera.view.PreviewView
         android:id="@+id/previewView"
-        android:layout_width="290dp"
-        android:layout_height="290dp"
+        android:layout_width="284dp"
+        android:layout_height="257dp"
 
         app:layout_constraintBottom_toTopOf="@+id/b"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        >
-    </androidx.camera.view.PreviewView>
+        ></androidx.camera.view.PreviewView>
 
 
 <!--new camera preview-->
@@ -35,19 +47,17 @@
 <!--            tools:ignore="MissingConstraints" />-->
 
 
-
     <View
-            android:id="@+id/square_overlay"
-            android:layout_width="280dp"
-            android:layout_height="280dp"
-            android:visibility="visible"
-            android:background="@drawable/camera_scan"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toTopOf="@id/previewView"
-            app:layout_constraintBottom_toBottomOf="@id/previewView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+        android:id="@+id/square_overlay"
+        android:layout_width="288dp"
+        android:layout_height="265dp"
+        android:background="@drawable/camera_scan"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/previewView"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/previewView" />
 
     <TextView
         android:id="@+id/textView28"
