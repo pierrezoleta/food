@@ -35,6 +35,7 @@ import com.example.yttest.ml.Adobov1;
 import com.example.yttest.ml.Adobov2;
 import com.example.yttest.ml.Combineadobov;
 import com.example.yttest.ml.Goated;
+import com.example.yttest.ml.Incfinal;
 import com.example.yttest.ml.Lastfinal;
 import com.example.yttest.ml.Nix;
 import com.example.yttest.ml.Scadobov1;
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     public void classifyImage(Bitmap image)
     {
         try {
-            Nix model = Nix.newInstance(getApplicationContext());
+            Incfinal model = Incfinal.newInstance(getApplicationContext());
 
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 32, 32, 3}, DataType.FLOAT32);
             ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3);
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             inputFeature0.loadBuffer(byteBuffer);
 
             // Runs model inference and gets result.
-            Nix.Outputs outputs = model.process(inputFeature0);
+            Incfinal.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
 
