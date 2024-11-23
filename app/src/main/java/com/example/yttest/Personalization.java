@@ -46,7 +46,7 @@ public class Personalization extends AppCompatActivity {
         heightt = findViewById(R.id.editTextHeight);
         weightt = findViewById(R.id.editTextWeight);
 
-        gender = "Male";
+       gender = "Male";
 
 
         rg.check(rg.getChildAt(0).getId());
@@ -122,12 +122,22 @@ public class Personalization extends AppCompatActivity {
                     editor.putFloat("height", height);
                     editor.putFloat("weight", weight);
 
-                    Float caloryCompute = (13 * weight) +700;
-                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
-                    String roundedValue = decimalFormat.format(caloryCompute);
+                    Float caloryCompute = 0f;
+
+                    if(gender.equals("Male")){
+                        caloryCompute = 66.4730f + 13.751f * weight + 5.0033f * height - 6.7550f * age;
+                    } else if (gender.equals("Female")) {
+                        caloryCompute = 655.0955f + 9.5643f * weight + 1.8496f * height - 4.6756f * age;
+                    }
+
+                    int roundedCalories = Math.round(caloryCompute);
+
+                    //Float caloryCompute   = (13 * weight) +700;
+//                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+//                    String roundedValue = decimalFormat.format(caloryCompute);
 
 
-                    editor.putFloat("caloriescompute", Float.parseFloat(roundedValue));
+                    editor.putFloat("caloriescompute", roundedCalories);
 
 
                     editor.apply();

@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             //String[] classes = {"Adobo", "Dinuguan", "Laing"};
             String[] classes = {"Adobo", "Arroz Caldo", "Bicol Express", "Champorado",
                     "Dinuguan", "Kare Kare", "Laing", "Pinakbet", "Sinigang", "Tinola"};
-            Toast.makeText(MainActivity.this, Arrays.toString(confidences) + "" + classes[maxPos], Toast.LENGTH_LONG).show();
+           // Toast.makeText(MainActivity.this, Arrays.toString(confidences) + "" + classes[maxPos], Toast.LENGTH_LONG).show();
 
             TextView stats2 = findViewById(R.id.stats2);
 
