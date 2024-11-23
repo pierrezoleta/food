@@ -16,14 +16,13 @@
             android:id="@+id/imageView10"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="1:1"
             android:background="@color/white"
             android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-             />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/image_gradient"
@@ -169,6 +168,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout12" />
+
+        <ImageView
+            android:id="@+id/moreInfo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="202dp"
+            android:layout_marginBottom="732dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView10"
+            app:srcCompat="@drawable/gallery_icon"
+            tools:srcCompat="@drawable/gallery_icon" />
 
         <Button
             android:id="@+id/btnLogFood"

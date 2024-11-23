@@ -2,6 +2,7 @@ package com.example.yttest;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,26 @@ public class QuantityFragment extends DialogFragment {
                 if (listener != null && !editQuantity.getText().toString().isEmpty()) {
 
                    try{
+
+                       // Create or get the SharedPreferences object
+                       SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Pref", getContext().MODE_PRIVATE);
+
+                       SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
+
+
+
                        Double quantity = Double.parseDouble(String.valueOf(editQuantity.getText().toString().charAt(0)));
+
+                       editor.putInt("quantityhehe", Integer.parseInt(String.valueOf(editQuantity.getText().toString().charAt(0))));
+
+                       // Apply the changes asynchronously
+
+
+                       // Commit the changes
+                       editor.apply();
+
                        listener.onQuantityConfirmed(editQuantity.getText().toString());
                        dismiss();
                    }catch(NumberFormatException e){

@@ -56,6 +56,8 @@ public class NutritionFragment extends Fragment implements QuantityFragment.Quan
 
         int quantity = Integer.parseInt(String.valueOf(serving.getText().toString().charAt(0)));
 
+
+
         DecimalFormat decimalFormat = new DecimalFormat("0");
         switch (recognizedFood) {
             case "Adobo":
@@ -138,6 +140,11 @@ public class NutritionFragment extends Fragment implements QuantityFragment.Quan
 
         // Put the string value in the SharedPreferences
         editor.putString("foodName", recognizedFood);
+
+
+
+        // Apply the changes asynchronously
+
 
         // Commit the changes
         editor.apply();
