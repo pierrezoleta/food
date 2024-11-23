@@ -6,15 +6,19 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -68,48 +72,99 @@ public class Fooddetected extends AppCompatActivity {
                 int calorieToBeLogged = prefs.getInt("caloriesToLog", 999);
                 Float calorieAllowance = (prefs.getFloat("caloriesRemaining", 0));
 
-                if(calorieAllowance < calorieToBeLogged){
+//                if(calorieAllowance < calorieToBeLogged){
+//
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(Fooddetected.this);
+//                    builder.setMessage("Adding this food item is over your calorie budget. Are you sure you want to log?")
+//                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    Type type = new TypeToken<ArrayList<FoodClass>>() {}.getType();
+//                                    ArrayList<FoodClass> foodList =  gson.fromJson(json, type);
+//
+//
+//                                    String foodName = prefs.getString("foodToLog", "AWTS ERROR");
+//                                    int foodQuantity = prefs.getInt("caloriesToLog", 999);
+//
+//                                    Calendar calendar = Calendar.getInstance();
+//                                    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault());
+//
+//                                    // Format the date and time
+//                                    String dateTime = dateFormat.format(calendar.getTime());
+//
+//                                    foodList.add(new FoodClass(foodName, foodQuantity, dateTime, dateTime));
+//
+//
+//                                    SharedPreferences.Editor editor = prefs.edit();
+//
+//
+//                                    String json1 = gson.toJson(foodList);
+//                                    editor.putString("arraylist", json1);
+//                                    editor.apply();
+//
+//
+//                                    Intent intent = new Intent(Fooddetected.this, Foodlog.class);
+//                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                                    startActivity(intent);
+//                                }
+//                            })
+//                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    // User clicked "No," do nothing
+//                                }
+//                            });
+//                    // Create and show the AlertDialog
+//                    builder.create().show();
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Fooddetected.this);
-                    builder.setMessage("Adding this food item is over your calorie budget. Are you sure you want to log?")
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    Type type = new TypeToken<ArrayList<FoodClass>>() {}.getType();
-                                    ArrayList<FoodClass> foodList =  gson.fromJson(json, type);
 
+                if (calorieAllowance < calorieToBeLogged) {
+                    // Create custom dialog
+                    Dialog dialog = new Dialog(Fooddetected.this);
+                    dialog.setContentView(R.layout.exceed_calorie_dialog);
+                    dialog.setCancelable(false); // Prevent dismissing on outside touch
 
-                                    String foodName = prefs.getString("foodToLog", "AWTS ERROR");
-                                    int foodQuantity = prefs.getInt("caloriesToLog", 999);
+                    // Get dialog elements
+                    TextView dialogMessage = dialog.findViewById(R.id.dialog_message);
+                    Button positiveButton = dialog.findViewById(R.id.dialog_positive);
+                    Button negativeButton = dialog.findViewById(R.id.dialog_negative);
 
-                                    Calendar calendar = Calendar.getInstance();
-                                    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault());
+                    // Set up click listeners
+                    positiveButton.setOnClickListener(v -> {
+                        Type type = new TypeToken<ArrayList<FoodClass>>() {}.getType();
+                        ArrayList<FoodClass> foodList = gson.fromJson(json, type);
 
-                                    // Format the date and time
-                                    String dateTime = dateFormat.format(calendar.getTime());
+                        String foodName = prefs.getString("foodToLog", "AWTS ERROR");
+                        int foodQuantity = prefs.getInt("caloriesToLog", 999);
 
-                                    foodList.add(new FoodClass(foodName, foodQuantity, dateTime, dateTime));
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault());
+                        String dateTime = dateFormat.format(calendar.getTime());
 
+                        foodList.add(new FoodClass(foodName, foodQuantity, dateTime, dateTime));
 
-                                    SharedPreferences.Editor editor = prefs.edit();
+                        SharedPreferences.Editor editor = prefs.edit();
+                        String json1 = gson.toJson(foodList);
+                        editor.putString("arraylist", json1);
+                        editor.apply();
 
+                        Intent intent = new Intent(Fooddetected.this, Foodlog.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
 
-                                    String json1 = gson.toJson(foodList);
-                                    editor.putString("arraylist", json1);
-                                    editor.apply();
+                        dialog.dismiss(); // Close the dialog
+                    });
 
+                    negativeButton.setOnClickListener(v -> {
+                        // Just dismiss the dialog
+                        dialog.dismiss();
+                    });
 
-                                    Intent intent = new Intent(Fooddetected.this, Foodlog.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                }
-                            })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // User clicked "No," do nothing
-                                }
-                            });
-                    // Create and show the AlertDialog
-                    builder.create().show();
+                    // Show the dialog
+                    int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
+
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    dialog.getWindow().setLayout(width, WindowManager.LayoutParams.WRAP_CONTENT);
+                    dialog.show();
 
 
                 }else{
