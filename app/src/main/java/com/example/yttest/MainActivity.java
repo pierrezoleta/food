@@ -275,13 +275,13 @@ public class MainActivity extends AppCompatActivity {
             startCamera(cameraFacing);
         }
 
-        backCameraButton = findViewById(R.id.btnBackCamera);
-        backCameraButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//        backCameraButton = findViewById(R.id.btnBackCamera);
+//        backCameraButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
 
         gallery = findViewById(R.id.galleryButton);
 
