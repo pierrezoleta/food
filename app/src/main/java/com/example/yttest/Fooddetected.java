@@ -697,6 +697,7 @@ public class Fooddetected extends AppCompatActivity {
         for (int i = 0; i < quantities.length; i++) {
             ingredientsText.append(df.format(quantities[i]*quantity)).append(" ").append(ingredientsArray[i]).append("\n");
         }
+        ingredientsText.append("Source: Panlasang Pinoy").append("\n");
 
         // Set the TextView's text
         ingredientsTextView.setText(ingredientsText.toString());
