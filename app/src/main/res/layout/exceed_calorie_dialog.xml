@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_rounded_background"
+    android:background="@drawable/exceed_box"
     >
 
-        <ImageView
-            android:id="@+id/exceedImage"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-            app:srcCompat="@drawable/exceed_image"
+            app:cardCornerRadius="50dp"
+            android:background="@drawable/round_image_top"
+            app:cardPreventCornerOverlap="true"
+            app:cardBackgroundColor="@android:color/transparent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="1.5dp">
+
+                <ImageView
+                    android:id="@+id/exceedImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/exceed_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+        </androidx.cardview.widget.CardView>
+
+
 
         <TextView
             android:id="@+id/dialog_message"
@@ -26,18 +42,18 @@
             android:text="Calorie goal exceeded!"
             android:textAlignment="center"
             android:textColor="@color/text"
-            android:textSize="38sp"
-            android:lineHeight="44sp"
+            android:textSize="28sp"
+            android:lineHeight="38sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/exceedImage" />
+            app:layout_constraintTop_toBottomOf="@id/cardview" />
 
         <TextView
             android:id="@+id/body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/plusjakarta_regular"
+            android:fontFamily="@font/plusjakarta_semibold"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
             android:text="You've already reached your calorie goal for today. Logging this food will put you over your daily target"
@@ -54,13 +70,15 @@
             android:id="@+id/dialog_positive"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="60dp"
             android:background="@drawable/exceed_button"
             android:backgroundTint="@null"
             android:fontFamily="@font/plusjakarta_bold"
             android:letterSpacing="0"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:text="Log Food Anyway"
             android:textAllCaps="false"
             android:textColor="#F27527"
@@ -74,8 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="24dp"
             android:background="#00FFFFFF"

@@ -19,7 +19,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Signup extends AppCompatActivity {
-
     Button register;
     TextInputEditText username, password,email;
 
@@ -83,6 +82,10 @@ public class Signup extends AppCompatActivity {
                     editor.putString("email", email.getText().toString());
                     editor.apply();
 
+                    // Reset dialog display date when a new user registers
+
+                    resetDialogForNewUser();
+
 
                     SharedPreferences sharedPreferencess = getSharedPreferences("Pref", Context.MODE_PRIVATE);
 
@@ -109,5 +112,12 @@ public class Signup extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void resetDialogForNewUser() {
+        SharedPreferences prefs = getSharedPreferences("DialogPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove("lastShownDate");  // Clear the stored date, so the dialog will be shown again
+        editor.apply();
     }
 }

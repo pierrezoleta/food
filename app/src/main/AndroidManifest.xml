@@ -19,6 +19,9 @@
         android:theme="@style/Theme.YtTest"
         tools:targetApi="31">
         <activity
+            android:name=".ReachCalorieDialogActivity"
+            android:exported="false" />
+        <activity
             android:name=".Profile"
             android:exported="false" />
         <activity

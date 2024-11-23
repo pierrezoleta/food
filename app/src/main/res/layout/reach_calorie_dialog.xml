@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_rounded_background"
+    tools:context=".ReachCalorieDialogActivity"
+    android:paddingBottom="40dp">
+
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="50dp"
+        android:background="@drawable/round_image_top"
+        app:cardPreventCornerOverlap="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="1.5dp">
+
+        <ImageView
+            android:id="@+id/exceedImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/reach_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/dialog_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plusjakarta_bold"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="You've met your daily caloric needs!"
+        android:textAlignment="center"
+        android:textColor="@color/text"
+        android:textSize="28sp"
+        android:lineHeight="38sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardview" />
+
+    <TextView
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/plusjakarta_semibold"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="Keeping within your calorie budget helps you stay on track toward your goal."
+        android:textAlignment="center"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        android:lineHeight="26sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_message" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/reminder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dialog_negative"
+        app:layout_constraintStart_toStartOf="parent"
+       android:padding="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/reminder_rounded">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/reminder_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/reminder_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plusjakarta_semibold"
+
+            android:paddingRight="10dp"
+            android:text="Exceeding your calories may lead to weight gain, so try to stay on track!"
+            android:textAlignment="textStart"
+            android:textColor="#E6965D"
+            android:textSize="12sp"
+            android:lineHeight="20sp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintStart_toEndOf="@id/imageView3"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/dialog_negative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+
+        android:layout_marginEnd="40dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/plusjakarta_bold"
+        android:letterSpacing="0"
+        android:text="Close"
+        android:textAllCaps="false"
+        android:textColor="@color/primary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/body"
+       />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

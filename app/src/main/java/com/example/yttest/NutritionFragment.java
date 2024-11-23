@@ -206,7 +206,7 @@ public class NutritionFragment extends Fragment implements QuantityFragment.Quan
         // Setting the color for the quantityString portion
         int start = 0;
         int end = quantityString.length();
-        spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#2AD87D")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#0099FF")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         // Setting the text to the TextView
         serving.setText(spannableString);

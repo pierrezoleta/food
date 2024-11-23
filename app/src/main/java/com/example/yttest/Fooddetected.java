@@ -17,6 +17,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -450,6 +453,8 @@ public class Fooddetected extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
             }
+
+
         });
 
         logFood.setOnClickListener(new View.OnClickListener() {
@@ -641,6 +646,8 @@ public class Fooddetected extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
+
+
         tabLayout.getTabAt(0).setText("Nutritional Content");
         tabLayout.getTabAt(1).setText("Ingredients");
 
@@ -668,6 +675,26 @@ public class Fooddetected extends AppCompatActivity {
         }
 
 
+       tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+           @Override
+           public void onTabSelected(TabLayout.Tab tab) {
+               if (tab.getPosition() == 0) {
+                   moreinfo.setVisibility(View.VISIBLE);
+               } else {
+                   moreinfo.setVisibility(View.GONE);
+               }
+           }
+
+           @Override
+           public void onTabUnselected(TabLayout.Tab tab) {
+
+           }
+
+           @Override
+           public void onTabReselected(TabLayout.Tab tab) {
+
+           }
+       });
 
     }
 
@@ -693,22 +720,55 @@ public class Fooddetected extends AppCompatActivity {
 
         DecimalFormat df = new DecimalFormat("#.00");
 
-       ingredientsText.append(quantity).append("Servings of this food includes").append("\n");
-        for (int i = 0; i < quantities.length; i++) {
-            ingredientsText.append(df.format(quantities[i]*quantity)).append(" ").append(ingredientsArray[i]).append("\n");
-        }
-        ingredientsText.append("Source: Panlasang Pinoy").append("\n");
-
+        // old
+//       ingredientsText.append(quantity).append(" Serving(s) of this food includes").append("\n\n");
+//        for (int i = 0; i < quantities.length; i++) {
+//            ingredientsText.append(df.format(quantities[i]*quantity)).append(" ").append(ingredientsArray[i]).append("\n");
+//        }
+//        ingredientsText.append("\nSource: Panlasang Pinoy").append("\n");
 
         // Set the TextView's text
-        ingredientsTextView.setText(ingredientsText.toString());
+//        ingredientsTextView.setText(ingredientsText.toString());
+
+        //new
+        SpannableStringBuilder fullTextBuilder = new SpannableStringBuilder();
+
+        // Create the "1 Serving(s) of this food includes" text with color
+        String quantityString = quantity + " Serving(s) of this food includes";
+        SpannableString spannableServingText = new SpannableString(quantityString);
+        spannableServingText.setSpan(
+                new ForegroundColorSpan(Color.parseColor("#FFFFFF")),
+                0,
+                quantityString.length(),
+                SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        // Append the serving text first
+        fullTextBuilder.append(spannableServingText).append("\n");
+
+        // Append the ingredient quantities and names
+        for (int i = 0; i < quantities.length; i++) {
+            fullTextBuilder.append(df.format(quantities[i] * quantity))
+                    .append(" ")
+                    .append(ingredientsArray[i])
+                    .append("\n");
+        }
+
+        ingredientsTextView.setText(fullTextBuilder);
+
+
 
         // Create an AlertDialog to show the popup
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(popupView)
                 .setCancelable(true)
                 .setPositiveButton("Close", (dialog, id) -> dialog.dismiss());
-        builder.create().show();
+//        builder.create().show();
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // Set a light gray background
+
     }
 
 

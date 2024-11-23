@@ -103,7 +103,7 @@
                 android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/plusjakarta_bold"
                 android:text="Recognized Food"
                 android:textColor="@color/white"
@@ -171,17 +171,14 @@
 
         <ImageView
             android:id="@+id/moreInfo"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="202dp"
-            android:layout_marginBottom="732dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView10"
-            app:srcCompat="@drawable/gallery_icon"
-            tools:srcCompat="@drawable/gallery_icon" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:tooltipText="Serving size example"
+            app:layout_constraintBottom_toBottomOf="@id/viewPager"
+            app:layout_constraintStart_toStartOf="@id/viewPager"
+            app:srcCompat="@drawable/info_serving_icon"
+            tools:srcCompat="@drawable/info_serving_icon" />
 
         <Button
             android:id="@+id/btnLogFood"
@@ -199,7 +196,8 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/btnBack"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <Button
             android:id="@+id/btnBack"

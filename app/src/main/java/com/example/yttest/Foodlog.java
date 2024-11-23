@@ -7,18 +7,24 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,6 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -50,10 +57,10 @@ import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 
 public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemClickListener {
-
+    private static final String DIALOG_PREFS = "DialogPrefs";
     Button testButton;
-    private KonfettiView konfettiView = null;
-    private Shape.DrawableShape drawableShape = null;
+//    private KonfettiView konfettiView = null;
+//    private Shape.DrawableShape drawableShape = null;
 
     LinearLayout buttonProfile;
     CircularProgressIndicator progressBar;
@@ -225,13 +232,13 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
         editor.apply();
 
 
-        // Confetti
-        final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.party);
-        if (drawable == null) {
-            Log.e("KonfettiTest", "Drawable is null");
-        }
-        drawableShape = new Shape.DrawableShape(drawable, true, true);
-        konfettiView = findViewById(R.id.konfettiView);
+//        // Confetti
+//        final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.party);
+//        if (drawable == null) {
+//            Log.e("KonfettiTest", "Drawable is null");
+//        }
+//        drawableShape = new Shape.DrawableShape(drawable, true, true);
+//        konfettiView = findViewById(R.id.konfettiView);
 
 
         int progress;
@@ -241,6 +248,19 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
             progressBar.setIndicatorColor(ContextCompat.getColor(this, R.color.progress_bar_exceeded));
             progress = 100;
             KcalText.setTextColor(ContextCompat.getColor(this, R.color.progress_bar_exceeded));
+
+
+
+            checkIfDialogShouldBeShown();
+
+        // Create custom dialog
+            Dialog dialog = new Dialog(Foodlog.this);
+            dialog.setContentView(R.layout.reach_calorie_dialog);
+            dialog.setCancelable(false); // Prevent dismissing on outside touch
+
+            Button negativeButton = dialog.findViewById(R.id.dialog_negative);
+            negativeButton.setOnClickListener(v -> dialog.dismiss());
+
 
 
 //        } else if (caloriesAllowed <= 0) {
@@ -284,13 +304,16 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
         progressAnimator.start();
     }
 
-    public void explode() {
+
+    // The method that triggers the confetti explosion
+    public void explode(KonfettiView konfettiView) {
         Log.d("KonfettiTest", "Confetti explosion triggered");
+
         EmitterConfig emitterConfig = new Emitter(110L, TimeUnit.MILLISECONDS).max(100);
         konfettiView.start(
                 new PartyFactory(emitterConfig)
                         .spread(360)
-                        .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE, drawableShape))
+                        .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE))
                         .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
                         .setSpeedBetween(0f, 30f)
                         .position(new Position.Relative(0.5, 0.3))
@@ -298,18 +321,94 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
         );
     }
 
+    private void showDialog() {
+        // Assuming you are calling the dialog as before
+            // Create custom dialog
+            Dialog dialog = new Dialog(Foodlog.this);
+            dialog.setContentView(R.layout.reach_calorie_dialog);
+            dialog.setCancelable(true); // Prevent dismissing on outside touch
 
 
-    private boolean isNextDay(Calendar lastDate, Calendar currentDate) {
-        lastDate.add(Calendar.DATE, 1);
-        return lastDate.get(Calendar.YEAR) == currentDate.get(Calendar.YEAR) &&
-                lastDate.get(Calendar.DAY_OF_YEAR) == currentDate.get(Calendar.DAY_OF_YEAR);
+        ConstraintLayout reminder = dialog.findViewById(R.id.reminder);
+
+        reminder.setVisibility(View.GONE);
+
+        // Find the negative button to dismiss the dialog
+        Button negativeButton1 = dialog.findViewById(R.id.dialog_negative);
+        negativeButton1.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+
+
+        // Show the dialog
+            int width = (int)(getResources().getDisplayMetrics().widthPixels * 0.90);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().setLayout(width, WindowManager.LayoutParams.WRAP_CONTENT);
+            dialog.show();
+
+        startPopAnimationForTextView(dialog);
+
+            // Trigger confetti if KonfettiView is found
+            KonfettiView konfettiView = dialog.findViewById(R.id.konfettiView);
+            if (konfettiView != null) {
+//                konfettiView.setZ(1000);  // Ensure the Konfetti view is above other views
+//                konfettiView.bringToFront();
+                konfettiView.post(() -> explode(konfettiView));  // Call explode method for confetti
+            } else {
+                Log.e("KonfettiTest", "KonfettiView is not found in the dialog layout.");
+            }
+        }
+
+    private void startPopAnimationForTextView(Dialog dialog) {
+        // Ensure the reminder is visible before starting the animation
+        dialog.setContentView(R.layout.reach_calorie_dialog);
+        ConstraintLayout reminder = dialog.findViewById(R.id.reminder);
+
+
+        reminder.setVisibility(View.VISIBLE);
+
+        // Create animations for the pop effect (scale, alpha, and rotation)
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(reminder, "scaleX", 0f, 1.2f, 1f);
+        ObjectAnimator scaleY = ObjectAnimator.ofFloat(reminder, "scaleY", 0f, 1.2f, 1f);
+        ObjectAnimator alpha = ObjectAnimator.ofFloat(reminder, "alpha", 0f, 1f);
+        ObjectAnimator rotation = ObjectAnimator.ofFloat(reminder, "rotation", -15f, 0f);
+
+        // Group all animations together
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(scaleX, scaleY, alpha, rotation);
+        animatorSet.setDuration(1500);  // Duration for the pop effect (400ms)
+
+        // Start the animation
+        animatorSet.start();
     }
 
-    private boolean isSameDay(Calendar lastDate, Calendar currentDate) {
-        return lastDate.get(Calendar.YEAR) == currentDate.get(Calendar.YEAR) &&
-                lastDate.get(Calendar.DAY_OF_YEAR) == currentDate.get(Calendar.DAY_OF_YEAR);
+    private void checkIfDialogShouldBeShown() {
+        SharedPreferences prefs = getSharedPreferences(DIALOG_PREFS, MODE_PRIVATE);
+        String lastShownDate = prefs.getString("lastShownDate", "");
+
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+        if (lastShownDate.isEmpty() || !lastShownDate.equals(currentDate)) {
+            // Show the dialog if it's the first time today or the dialog hasn't been shown today
+            showDialog();
+
+            // Store the current date to prevent showing the dialog again today
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("lastShownDate", currentDate);
+            editor.apply();
+        }
     }
+
+//    private boolean isNextDay(Calendar lastDate, Calendar currentDate) {
+//        lastDate.add(Calendar.DATE, 1);
+//        return lastDate.get(Calendar.YEAR) == currentDate.get(Calendar.YEAR) &&
+//                lastDate.get(Calendar.DAY_OF_YEAR) == currentDate.get(Calendar.DAY_OF_YEAR);
+//    }
+//
+//    private boolean isSameDay(Calendar lastDate, Calendar currentDate) {
+//        return lastDate.get(Calendar.YEAR) == currentDate.get(Calendar.YEAR) &&
+//                lastDate.get(Calendar.DAY_OF_YEAR) == currentDate.get(Calendar.DAY_OF_YEAR);
+//    }
 
     @Override
     public void onBackPressed() {

@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentStreakPopup"
-    android:padding="20dp"
-    android:background="@color/bg">
+    android:padding="30dp"
+    android:background="@drawable/dialog_rounded_background">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -18,17 +18,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elegantTextHeight="true"
-        android:fontFamily="@font/satoshi_bold"
+        android:fontFamily="@font/plusjakarta_medium"
         android:text="Great job on completing your \ncalorie goal for today!"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        android:textAlignment="textStart"
+        android:textSize="15sp"
+        android:textColor="@color/text_secondary"
+        android:lineHeight="38sp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.175" />
+        />
+
+    <TextView
+        android:id="@+id/moreinfotext123"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/plusjakarta_semibold"
+        android:lineHeight="20sp"
+        android:text="Source: Panlasang Pinoy"
+        android:textAlignment="textStart"
+        android:textColor="@color/primary"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/moreinfotext" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
