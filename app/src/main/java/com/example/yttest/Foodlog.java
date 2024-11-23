@@ -235,20 +235,20 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
 
 
         int progress;
-        if (caloriesAllowed < -500) {
+        if (caloriesAllowed <=0) {
 
-            explode();
+//            explode();
             progressBar.setIndicatorColor(ContextCompat.getColor(this, R.color.progress_bar_exceeded));
             progress = 100;
             KcalText.setTextColor(ContextCompat.getColor(this, R.color.progress_bar_exceeded));
 
 
-        } else if (caloriesAllowed <= 0) {
-
-            explode();
-            progressBar.setIndicatorColor(ContextCompat.getColor(this, R.color.progress_bar_completed));
-            progress = 100;
-            KcalText.setTextColor(ContextCompat.getColor(this, R.color.progress_bar_completed));
+//        } else if (caloriesAllowed <= 0) {
+//
+//            explode();
+//            progressBar.setIndicatorColor(ContextCompat.getColor(this, R.color.progress_bar_completed));
+//            progress = 100;
+//            KcalText.setTextColor(ContextCompat.getColor(this, R.color.progress_bar_completed));
 
 
         } else {
