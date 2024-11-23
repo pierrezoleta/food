@@ -351,8 +351,8 @@ public class Foodlog extends AppCompatActivity implements FoodAdapter.FoodItemCl
             // Trigger confetti if KonfettiView is found
             KonfettiView konfettiView = dialog.findViewById(R.id.konfettiView);
             if (konfettiView != null) {
-//                konfettiView.setZ(1000);  // Ensure the Konfetti view is above other views
-//                konfettiView.bringToFront();
+                konfettiView.setZ(1000);  // Ensure the Konfetti view is above other views
+                konfettiView.bringToFront();
                 konfettiView.post(() -> explode(konfettiView));  // Call explode method for confetti
             } else {
                 Log.e("KonfettiTest", "KonfettiView is not found in the dialog layout.");
