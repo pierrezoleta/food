@@ -699,6 +699,7 @@ public class Fooddetected extends AppCompatActivity {
         }
         ingredientsText.append("Source: Panlasang Pinoy").append("\n");
 
+
         // Set the TextView's text
         ingredientsTextView.setText(ingredientsText.toString());
 
