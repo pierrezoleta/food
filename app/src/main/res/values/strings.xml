@@ -1,10 +1,52 @@
 <resources>
-    <string name="app_name">YtTest</string>
+    <string name="app_name">SnapEat</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="height">How tall are you? <font color="#0099FF">(in Centimeters)</font></string>
     <string name="weight">How much do you weight? <font color="#0099FF">(in Kilograms)</font></string>
     <string name="login">Already have an account? <font color="#0099FF">Log In</font></string>
     <string name="serving_size_text"><![CDATA[<font color="#0099FF">1</font> - Serving of ]]></string>
+    <string name="privacy_policy_content">SnapEat ("we," "our," or "us") respects your privacy and is committed to protecting the personal information you provide while using our app (SnapEat). This Privacy Policy outlines how we collect, use, store, and safeguard your information. By using the App, you agree to the practices described in this Privacy Policy.\n\n
+1. Information We Collect\n\n
+
+        We collect the following information from users of the app:\n
+- Personal Information: When you register an account with us, we collect your personal information, which may include:\n
+  - Username\n
+  - First Name\n
+  - Last Name\n
+  - Email Address\n
+  - Password\n
+  - Age\n
+  - Gender\n
+  - Height\n
+  - Weight\n
+- Food Images: If you use the food recognition feature, we collect photos of food that you capture using the app. You can either capture food using your device\'s camera or upload food images from your gallery. These images are used for the purpose of food recognition, which helps calculate nutritional information.\n\n
+
+        2. How We Use Your Information\n\n
+The information you provide is used exclusively for the following purposes:\n
+- Account Creation: To set up and personalize your App experience.\n
+- BMR Calculation: To compute your Basal Metabolic Rate based on the information you input.\n
+- Food Recognition: To recognize food from images you capture or upload from your gallery. This data is used to provide nutritional information about the food you capture.\n
+- Data Display: To show your personal data within the App for your convenience.\n
+The information is stored locally on your device and is not shared, transmitted, or accessed by us or any third parties.\n\n
+
+         3. Storage and Retention of Data\n\n
+- Local Storage: The information you input, such as your username, password, and other personal details, is stored locally on your device using SharedPreferences. This means we do not have access to this information, and it is only available on your device.\n
+- Retention Period: The information remains on your device until:\n
+  - You uninstall the App.\n
+  - You clear the Apps data or cache through your device settings.\n\n
+
+ 4. Data Security\n\n
+While the App does not transmit or share your data externally, we implement measures to ensure the integrity of the locally stored data:\n
+- The security of your device and its data is your responsibility. We recommend setting up device-level security such as PINs, passwords, or biometric authentication.\n\n
+
+        5. Third-Party Services\n
+This App does not integrate with or use any third-party services, SDKs, or analytics tools. There is no data collection, sharing, or tracking by external entities.\n\n
+
+6. Your Rights\n\n
+Since the App does not transmit data to external servers, you have full control over your information:\n
+- Access: You can view and edit your data within the App.\n
+- Delete: You can delete your data by clearing the Apps data or uninstalling it.\n
+    </string>
 
 
 </resources>
